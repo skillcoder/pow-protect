@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "github.com/skillcoder/pow-protect/internal/api/sdk/wisdom;wisdom";
+
+package wisdom;
+
+import "pow/pow.proto";
+
+// Wisdom service that provides API for getting word of wisdom.
+service Wisdom {
+  // Get returns Word of Wisdom.
+  rpc Get(GetRequest) returns (GetResponse) {}
+}
+
+// GetRequest - represent word of wisdom request.
+message GetRequest {
+  pow.Challenge challenge = 1;
+  bytes proof = 2;
+}
+
+// GetResponse - represent word of wisdom response.
+message GetResponse {
+  string word_of_wisdom = 1;
+}
+

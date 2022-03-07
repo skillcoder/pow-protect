@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "github.com/skillcoder/pow-protect/internal/api/sdk/pow;pow";
+
+package pow;
+
+// Pow service that provides API for getting proof of work challenge.
+service Pow {
+  // Challenge returns initial data for proof of work challenge.
+  rpc Challenge(ChallengeRequest) returns (ChallengeResponse) {}
+}
+
+message ChallengeRequest {}
+
+// ChallengeResponse -
+message ChallengeResponse {
+  Challenge challenge = 1;
+}
+
+// Challenge - struct represent pow challenge data.
+message Challenge {
+  bytes nonce = 1;
+  int32 difficulty = 2;
+  int64 stamp = 3;
+  bytes sign = 4;
+}
